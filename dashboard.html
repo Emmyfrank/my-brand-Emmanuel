@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/dashboard.css" rel="stylesheet">
+
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+    <main>
+        <div class="sidebar" id="sidebar">
+            <h2>DASHBOARD</h2>
+            <div class="dashboard">
+                <p id="dashboard" class="active">Dashboard</p>
+                <p id="add-article">Add Article</p>
+                <p id="view-articles">View Article</p>
+            </div>
+        </div>
+        <div class="topbar">
+            <img src="./bars-solid.svg" class="humburg" id="humburg"/>
+            <div>
+                <a  href="index.html">Home</a>
+            <button>Logout</button>
+            </div>
+        </div>
+        <div class="mainbar">
+            <div class="default" id="dashboard-cont">
+                <div class="card-conatiner">
+                    <div class="card">
+                        <img src="./trash-solid.svg" />
+                        <p>10 Messages</p>
+
+                    </div>
+                    <div class="card">
+                        <img src="./trash-solid.svg" />
+                        <p>12 Article</p>
+
+                    </div>
+                    <div class="card">
+                        <img src="./trash-solid.svg" />
+                        <p>100 subscribers</p>
+
+                    </div>
+                    <div class="card"> 
+                        <img src="./trash-solid.svg" />
+                        <p>15 comments</p>
+
+                    </div>
+
+                </div>
+                <h3>Messages</h3>
+                <div class="message">
+                    <p>Soleil</p>
+                    <p>i like your design </p>
+                    <div>
+                        <p>reply</p>
+                        <p>delete</p>
+                    </div>
+                </div>
+            </div>
+            <div class="add-article-cont" id="add-article-cont">
+                <form>
+                    <label>
+                        <h4>Title</h4>
+                        <input type="text" placeholder="Enter article title"/>
+                    </label>
+                    <label>
+                        <h4>Image</h4>
+                        <input type="file" placeholder="Enter article title"/>
+                    </label>
+                    <label>
+                        <h4>Description</h4>
+                        <textarea placeholder="Enter article description"></textarea>
+                    </label>
+                    <button>Add Article</button>
+                </form>
+            </div>
+            <div class="view-articles-cont" id="view-articles-cont"> 
+                <div class="delete" id="delete">
+                    <h4>Do you confirm Deleteting this Article?</h4>
+                    <div class="delete-actions">
+                        <button id="cancel">Cancel</button>
+                        <button id="confirm">Confirm</button>
+                    </div>
+                    
+                </div>
+                <div class="artccle-container">
+                    <div class="article">
+                        <p>this blog was amazing at time</p>
+                        <div>
+                            <button><img src="./pen-to-square-solid (1).svg"  class="action-svg"/></button>
+                            <button><img src="./trash-solid.svg" id="trash"   class="action-svg"/></button>
+            
+                        </div>
+                    </div>
+                    <div class="article">
+                        <p>this blog was amazing at time</p>
+                        <div>
+                            <button><img src="./pen-to-square-solid (1).svg"  class="action-svg"/></button>
+                            <button><img src="./trash-solid.svg" id="trash"   class="action-svg"/></button>
+            
+                        </div>
+                    </div>
+                    <div class="article">
+                        <p>this blog was amazing at time</p>
+                        <div>
+                            <button><img src="./pen-to-square-solid (1).svg"  class="action-svg"/></button>
+                            <button><img src="./trash-solid.svg" id="trash"  class="action-svg"/></button>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./scripts/dashboard.js"></script>
+</body>
+</html>

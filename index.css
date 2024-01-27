@@ -1,0 +1,562 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(91, 91, 225);
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+li {
+    list-style: none;
+}
+
+ul a {
+    color: white;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    position: relative;
+
+}
+
+.sidebar {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: rgb(70, 70, 213);
+    padding: 10px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    color: white;
+
+}
+
+
+
+.content{
+    width: 80%;
+    margin-left: 20%;
+    min-height: 100vh;
+    background-color: rgb(91, 91, 225);
+    position: relative;
+}
+
+
+/* sidebar contents css */
+
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-top img {
+    border-radius: 50px;
+}
+
+/* sidebar-middle css */
+
+.sidebar-middle{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: auto;
+}
+
+.svg-sidebar {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+}
+
+.sidebar-middle a{
+    display: flex;
+     padding: 5px 10px;
+    border-radius: 7px;
+   
+
+}
+
+.sidebar-middle a:hover {
+    background: gray;
+   
+}
+
+.sidebar-middle a:active {
+    background: aqua;
+}
+
+/* social links */
+
+.social-links {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-svg {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+/* this is cointents css */
+
+.content-overlay {
+    
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    margin-top: 29px;
+   
+}
+
+.me {
+    background-image: url("./images/nono1.jpg");
+    background-size: 100%;
+    width: 100%;
+    
+}
+.cont {
+   position: absolute;
+   bottom: 40px;
+   left: 50%;
+   right: 50%;
+   display: flex;
+   justify-content: space-around;
+   gap: 60px;
+
+}
+
+.contact-svg {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+/* absolute bottom-5 flex gap-[60px] */
+
+
+.glass {
+    /* border:1px solid rgba(255, 255, 255, 0.18); */
+    /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+    background: rgba(0, 0, 255,0.6);
+    color: white;
+}
+
+.view-works {
+    width: 100px !important;
+    height: 40px;
+    text-align: center;
+    border-radius: 7px;
+    background-color: orangered;
+    color: white;
+    padding: 10px 15px;
+}
+
+.hire-me {
+    width: 100px !important;
+    height: 40px;
+    text-align: center;
+    border-radius: 7px;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 15px;
+}
+
+/* about ccs */
+.about {
+    min-height: 100vh;
+    background:#fff;
+    /* margin-bottom:5px ; */
+    border-radius: 10px;
+
+}
+.about h2 {
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.about-intro {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom:100px ;
+
+}
+
+.about-actions {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.about-actions .orange{
+
+    width: 200px;
+    padding: 8px 13px;
+    text-align: center;
+    background: rgb(224, 151, 14);
+    color: white;
+    border-radius: 8px;
+
+
+}
+
+.about-actions .blue {
+    background: blue;
+    width: 200px;
+    padding: 8px 13px;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+}
+
+
+/* skills section css */
+#skills {
+   
+    min-height: 100vh;
+    background: #fff;
+    width: 100%;
+}
+
+#skills h2 {
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.skills-cont {
+    width: 80%;
+    margin: auto;
+    box-shadow: -1px 1px 4px 1px rgba(0, 0, 0, 0.18);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.skills-lang {
+    display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+            gap: 10px;
+}
+
+.skills-lang .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.svg {
+    width: 70px;
+    height: 70px;
+}
+
+
+
+/* experirnce ection css */
+
+.work-section {
+    min-height: 100vh;
+    background:white;
+    margin-top: 10px;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+
+}
+
+.work-section h2 {
+     text-align: center;
+    font-size: 50px;
+
+
+}
+
+.testmonial {
+    width: 80%;
+    margin: auto;
+    height: 140px;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background: #EB3223;
+    color:white;
+    box-shadow:1px -1px 4px 3px rgba(0, 0, 0, 0.18) ;
+    margin-bottom: 20px;
+}
+
+.completed-pro p {
+    font-size: 25px;
+}
+
+
+.checkpoint {
+    max-width: 300px;
+    position: relative;
+   
+    margin: auto;
+}
+
+.checkpoint div {
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+     margin-bottom: 15px;
+}
+
+.checkpoint div p {
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.checkpoint div h4 {
+    font-weight: bold;
+}
+
+
+.checkpoint:nth-child(even) {
+    border-right: 3px solid;
+    transform: translateX(-180px);
+    padding-right: 3em;
+}
+.checkpoint:nth-child(odd) {
+    border-left: 3px solid;
+    transform: translateX(117px);
+    padding-left: 3em;
+}
+
+.checkpoint:nth-child(odd)::before{
+    content:'';
+    width: 3em;
+    height: 3px;
+    background: gray;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.checkpoint:nth-child(even)::before{
+    content:'';
+    width: 3em;
+    height: 3px;
+    background: gray;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+.checkpoint:nth-child(odd) .year {
+    position: absolute;
+    top: 40%;
+    left: -10em;
+
+}
+.checkpoint:nth-child(even) .year {
+    position: absolute;
+    top: 40%;
+    right: -10em;
+
+}
+
+
+/* portifolio css starts here */
+
+.portfolio {
+    min-height: 100vh;
+    padding: 20px;
+    background: white;
+}
+
+.portfolio h1 {
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.tabs-container {
+    display: flex;
+    gap: 30px;
+
+}
+
+.active {
+    padding: 5px 8px;
+    border-radius:18px ;
+    background: red;
+    color: #fff;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Each column is at least 1fr and can grow */
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.project {
+    max-width: 300px;
+    margin-right: 10px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin: auto;
+
+}
+
+.project p{
+    padding: 5px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+@media only screen and (max-width:690px){
+    .sidebar {
+        display: none;
+    }
+    main {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .about {
+        width: 100%;
+    }
+    .content-overlay {
+        min-height:50vh;
+    }
+    .content-overlay h1 {
+        font-size:16px
+    }
+    .content-overlay p {
+        font-size: 14px;
+        text-align: center;
+    }
+    .cont {
+        gap: 10px;
+    }
+    .cont img {
+        width: 25px;
+        height: 25px;
+    }
+    body {
+        background: white;
+    }
+    .skills-lang input {
+        display: none;
+    }
+    .about-intro {
+        flex-direction: column;
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .about-intro img {
+        width: 100%;
+        height: auto;
+        /* border-radius: 100%; */
+    }
+    .about-actions {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+
+    .skills-cont {
+        width: 95%;
+    }
+
+    .work-section {
+        padding: 10px;
+    }
+
+    .testmonial {
+        width: 100%;
+    }
+
+    .completed-pro p {
+        font-size: 18px;
+    }
+   
+    .timeline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .checkpoint:nth-child(odd) .year {
+        position: relative;
+        left: 0;
+        margin-bottom: 20px;
+    }
+
+    .checkpoint:nth-child(even) .year {
+        position: relative;
+        right: 0;
+        margin-bottom: 20px;
+    }
+
+    .checkpoint:nth-child(odd),.checkpoint:nth-child(even) {
+        transform: translateX(0);
+        border: none;
+    }
+
+    .checkpoint:nth-child(even)::before,.checkpoint:nth-child(odd)::before {
+        display: none;
+    }
+
+    .projects {
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+}
+
