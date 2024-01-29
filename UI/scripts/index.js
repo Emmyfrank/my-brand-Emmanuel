@@ -7,7 +7,9 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    sidebar.style.display="e"
+                    if (window.innerWidth <= 690) {
+                        sidebar.style.display="none"
+                    } else sidebar.style.display="flex"
 
                     const targetId = this.getAttribute('href').substring(1);
 

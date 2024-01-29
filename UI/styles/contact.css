@@ -5,6 +5,12 @@
 
 }
 
+.contact h3 {
+    text-align: center;
+    padding: 40px;
+    font-size: 30px;
+}
+
 .contact-container {
     display: flex;
     width: 90%;
