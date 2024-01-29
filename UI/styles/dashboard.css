@@ -31,11 +31,13 @@ main {
     gap: 50px;
     padding:0 30px;
     align-items: center;
+    z-index: 1000;
 }
 
 .humburg {
     width: 40px;
     height: 40px;
+    display: none;
 }
 
 a {
@@ -195,7 +197,9 @@ a {
     background: white;
     display: none;
 }
-
+.topbar div {
+    margin-left: auto;
+}
 
 /* media querrie */
 
@@ -230,6 +234,9 @@ a {
 
     .add-article-cont form{
         width: 270px;
+    }
+    .humburg {
+        display: block;
     }
 }
 

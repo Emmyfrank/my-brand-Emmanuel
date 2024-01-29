@@ -131,7 +131,7 @@ ul a {
     flex-direction: column;
     gap: 20px;
     position: relative;
-    margin-top: 29px;
+    
    
 }
 
@@ -139,7 +139,6 @@ ul a {
     background-image: url("./images/nono1.jpg");
     background-size: 100%;
     width: 100%;
-
     
 }
 .cont {
@@ -470,6 +469,7 @@ ul a {
     }
     .content-overlay {
         min-height:50vh;
+        margin-top: 29px;
     }
     .content-overlay h1 {
         font-size:16px
