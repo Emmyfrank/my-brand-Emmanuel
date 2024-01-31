@@ -1,4 +1,6 @@
- document.addEventListener('DOMContentLoaded', function() {
+
+
+document.addEventListener('DOMContentLoaded', function () {
            
      const navLinks = document.querySelectorAll('ul a');
      const sidebar = document.getElementById("sidebar")

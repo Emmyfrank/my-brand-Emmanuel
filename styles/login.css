@@ -25,7 +25,7 @@ nav a {
     padding-right: 30px;
 }
 
-.login-form {
+#login-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,6 +48,7 @@ form input {
     background: gray;
     color: white;
     outline: none;
+    cursor: pointer;
 }
 
 
@@ -56,18 +57,29 @@ form input::placeholder {
 }
 
 
-.btn {
-    padding: 7px;
+#btn {
+    padding: 10px;
     border-radius: 10px;
     background: blue;
     color: white;
     border: none;
+    text-align: center;
+}
+#btn:hover{
+    background-color: yellow;
 }
 
 form a {
     text-decoration: none;
     text-align: center;
 }
+#error-message {
+    text-align: center;
+    color: red;
+    margin-top: 5px;
+    /* display: none; */
+}
+
 
 
 @media only screen and (max-width:690px) {
@@ -75,4 +87,6 @@ form a {
     form input {
         width: 300px;
     }
+
+    
 }

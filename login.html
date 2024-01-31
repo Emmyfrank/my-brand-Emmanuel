@@ -15,20 +15,22 @@
         </div>
     </nav>
 
-    <div class="login-form">
+    <div id="login-form">
         <h1>Admin Login Portal</h1>
-        <form>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
+        <form id="fornn">
+            <input type="text" placeholder="Username" id="username"  required>
+            <input type="password" placeholder="Password" id="password" required>
             <!-- <button type="submit" class="btn">Login</button> -->
-            <a href="./dashboard.html" class="btn">Login</a>
+            <button id="btn"type="button" onclick="handleLogin()">Login</button>
+            <p id="error-message"></p>
+    
         </form>
     </div>
 
 
     <!-- foooooter -->
 
-    
+    <script src="./scripts/login.js"></script>
     
 </body>
 </html>
