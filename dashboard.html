@@ -30,51 +30,47 @@
                 <div class="card-conatiner">
                     <div class="card">
                         <img src="./trash-solid.svg" />
-                        <p>10 Messages</p>
+                        <p id="messages-cont">0 Message(s)</p>
 
                     </div>
                     <div class="card">
                         <img src="./trash-solid.svg" />
-                        <p>12 Article</p>
+                        <p id="article-count">0 Article(s)</p>
 
                     </div>
                     <div class="card">
                         <img src="./trash-solid.svg" />
-                        <p>100 subscribers</p>
+                        <p>0 subscriber(s)</p>
 
                     </div>
                     <div class="card"> 
                         <img src="./trash-solid.svg" />
-                        <p>15 comments</p>
+                        <p id="comment-count">0 comment(s)</p>
 
                     </div>
 
                 </div>
                 <h3>Messages</h3>
-                <div class="message">
-                    <p>Emmanuel</p>
-                    <p>i like your design </p>
-                    <div>
-                        <p>reply</p>
-                        <p>delete</p>
-                    </div>
+                <div id="message-conatiner">
+                        <!-- messag here -->
                 </div>
+                
             </div>
             <div class="add-article-cont" id="add-article-cont">
-                <form>
+                <form id="article-form">
                     <label>
                         <h4>Title</h4>
-                        <input type="text" placeholder="Enter article title"/>
+                        <input type="text" placeholder="Enter article title" id="article-title"/>
                     </label>
                     <label>
                         <h4>Image</h4>
-                        <input type="file" placeholder="Enter article title"/>
+                        <input type="file" placeholder="Enter article title" id="article-image"/>
                     </label>
                     <label>
                         <h4>Description</h4>
-                        <textarea placeholder="Enter article description"></textarea>
+                        <textarea placeholder="Enter article description" id="article-desc"></textarea>
                     </label>
-                    <button>Add Article</button>
+                    <button type="submit" id="submitBtn">Add Article</button>
                 </form>
             </div>
             <div class="view-articles-cont" id="view-articles-cont"> 
@@ -86,35 +82,21 @@
                     </div>
                     
                 </div>
-                <div class="artccle-container">
-                    <div class="article">
-                        <p>this blog was amazing at time</p>
-                        <div>
-                            <button><img src="./pen-to-square-solid (1).svg"  class="action-svg"/></button>
-                            <button><img src="./trash-solid.svg" id="trash"   class="action-svg"/></button>
-            
-                        </div>
-                    </div>
-                    <div class="article">
-                        <p>this blog was amazing at time</p>
-                        <div>
-                            <button><img src="./pen-to-square-solid (1).svg"  class="action-svg"/></button>
-                            <button><img src="./trash-solid.svg" id="trash"   class="action-svg"/></button>
-            
-                        </div>
-                    </div>
-                    <div class="article">
+                <div class="article-holder" id="article-holder">
+                    
+                    <!-- <div class="article">
                         <p>this blog was amazing at time</p>
                         <div>
                             <button><img src="./pen-to-square-solid (1).svg"  class="action-svg" alt="img"/></button>
                             <button><img src="./trash-solid.svg" id="trash"  class="action-svg"/></button>
             
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </main>
     <script src="./scripts/dashboard.js"></script>
+    <script src="./scripts/article.js"></script>
 </body>
 </html>

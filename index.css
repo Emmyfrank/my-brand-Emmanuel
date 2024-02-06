@@ -325,6 +325,13 @@ ul a {
 .completed-pro p {
     font-size: 25px;
 }
+/* adedee */
+#error-message{
+    color: red;
+    padding-top: 5px;
+    text-align: center;
+    /* display: none; */
+}
 
 
 .checkpoint {

@@ -277,15 +277,15 @@
             <!-- recent post section starts here -->
             <div class="blogs" id="blogs">
                 <h1>Recent Posts</h1>
-                <div class="blogs-container">
-                    <a href="#" class="blog">
+                <div class="blogs-container" id="blogs-container">
+                    <!-- <a href="#" class="blog">
                         <img src="./images/nono1.jpg" alt="blog image"/>
                         <h4>Blog title here and soem lorem to coke as much as posssibel;</h4>
                         <div class="blog-des">
                             <p>12 nov 2023</p>
                             <p>@Emmy</p>
                         </div>
-                    </a>
+                    </a> -->
                     <a href="#" class="blog">
                         <img src="./images/nono1.jpg" alt="blog image"/>
                         <h4>Blog title here and soem lorem to coke as much as posssibel;</h4>
@@ -330,30 +330,30 @@
                     </div>
                 </div>
                 <div class="cont-2">
-                    <form>
+                    <form id="message-form">
                         <div class="dir">
                             <label>Email</label>
-                        <input type="text" placeholder="Enter name">
+                        <input type="text" placeholder="Enter Email" id="email" required>
                         </div>
                        <div class="dir">
                          <label>Subject</label>
-                        <input type="text" placeholder="Enter name">
+                        <input type="text" placeholder="Enter Subject" id="subject" required>
                        </div>
                         <div class="dir">
                             <label>Message</label>
-                        <textarea>
-                        </div>
-                            
+                        <textarea id="msg" placeholder="Enter your message">
+                         
                         </textarea>
-
-                        <button>Submit</button>
+                        </div>
+                        <p id="error-message"></p>
+                        <button type="submit" id="btn">Submit</button>
                         
                     </form>
                 </div>
                 </div>
 
             </div>
-            <!-- conatct section ends here -->
+            <!-- contact section ends here -->
 
 
 
@@ -364,9 +364,12 @@
 
     </div>
 
+
     <script src="./scripts/index.js">
     </script>
     <script src="./scripts/header.js"></script>
+    <script src="./scripts/contactMe.js"></script>
+    <script src="./scripts/blog-details.js"></script>
     
 </body>
 </html>

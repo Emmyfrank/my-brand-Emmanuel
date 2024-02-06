@@ -28,7 +28,7 @@ function validateCredentials(username, password) {
     
     // this isstatic admin username and password
     const validUsername = 'Emmy';
-  const validPassword = 'Rwabugiri';
+  const validPassword = '     ';
   
   
   return username === validUsername && password === validPassword;

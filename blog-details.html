@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <h2>Emmanule</h2>
+        <h2>Emmanuel</h2>
         <div class="links">
             <a href="./index.html">Home</a>
             <a href="./login.html">Login</a>
@@ -48,12 +48,12 @@
 
             <div class="int">
                 <img src="./images/svg/social/heart-solid.svg" alt="comments"/>
-                <p>34</p>
+                <p>0</p>
             </div>
 
             <div class="int">
                 <img src="./images/svg/social/comment-solid.svg" alt="comments"/>
-                <p>34</p>
+                <p>0</p>
             </div>
     
         </div>
@@ -66,20 +66,16 @@
                     <div>u must improve your ui design skills </div>
                 </div>        
             </div>
-            <div class="single-comment" id="comm">
-                <img src="./images/nono2.jpg" alt="comment"/>
-                <div>
-                    <div class="user">Dodos</div>
-                    <div>23rd jan 2023</div>
-                    <div>u must improve your ui design skills </div>
-                </div>        
-            </div>
+            
         </div>
-        <form>
-            <textarea>
+        <form id="blog-form-detais">
+            <textarea id="blogDetais-text" >
 
             </textarea>
-            <button>Comment</button>
+            <div class="subcontainer">
+            <button type="submit"id="btnblogdetails">Comment</button>
+            <p id="errorerror"></p>
+            </div>
         </form>
     </main>
     <script src="./scripts/blog-details.js"></script>

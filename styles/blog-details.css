@@ -136,3 +136,13 @@ form {
         width: 90%;
     }
 }
+#errorerror{
+    color: red;
+    display: none;
+}
+.subcontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+
+}
