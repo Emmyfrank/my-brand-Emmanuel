@@ -1,60 +1,40 @@
-// const blogDetailsForm = document.getElementById("blog-form-detais");
-// const blogdetailtext = document.getElementById("blogDetais-text");
-// const errormessagess = document.getElementById("errorerror");
 
-// blogDetailsForm.addEventListener("submit", (e) => {
-//     // e.preventDefault();
-//     const value = blogdetailtext.value.trim()
+const commentForm = document.getElementById("comment-form");
+const singleComment = document.getElementById("comment");
+const commentsContainer = document.getElementById("comments");
+
+commentForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     
-//     if (value === "") {
-//         alert("fail")
-//     } else {
-//         const allComments = JSON.parse(localStorage.getItem("comments")) || []
-//         allComments.push(value)
-
-//         localStorage.setItem("comments",JSON.stringify(allComments))
-
-//     }
+    const commentData = { content: singleComment.value };
+    const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
     
-// })
+    retrivedComments.push(commentData);
+    localStorage.setItem("comments", JSON.stringify(retrivedComments));
 
-// const allComments = JSON.parse(localStorage.getItem("comments"))
-// const commentsContainer = document.getElementById("comments")
+    commentForm.reset()
 
+    //calling function to display comment as i submit form 
+    displayComments(retrivedComments);
+});
 
-// allComments.map(comm => {
-//     const html = `<div class="single-comment" id="comm">
-//                 <img src="./images/nono2.jpg" alt="comment"/>
-//                 <div>
-//                     <div class="user">Dodos</div>
-//                     <div>23rd jan 2023</div>
-//                     <div>${comm} </div>
-//                 </div>        
-//             </div>`
-    
-//     return commentsContainer.insertAdjacentHTML("afterbegin",html)
-    
-    
-// })
+function displayComments(comments) {
+    // Clear previous comments to prevent from looping over and over each comment
+    commentsContainer.innerHTML = "";
 
-// const blogContainer = document.getElementById("blogs-container")
+    comments.forEach((comment, index) => {
+        const html = `<div class="single-comment">
+                        <img src="./images/nono2.jpg" alt="comment"/>
+                        <div>
+                            <div class="user">Comment.</div>
+                            <div>${comment.content}</div>
+                            <div>08 Fr 2024</div>
+                        </div>        
+                    </div>`;
+        commentsContainer.insertAdjacentHTML("afterbegin", html);
+    });
+}
 
-// const allArticles = JSON.parse(localStorage.getItem("articles"))
-
-// console.log("blog container",blogContainer)
-
-
-
-// allArticles.map(comm => {
-//     const single=`<a href="#" class="blog">
-//                         <img src="./images/nono1.jpg" alt="blog image"/>
-//                         <h4>${comm.title}</h4>
-//                         <div class="blog-des">
-//                             <p>12 nov 2023</p>
-//                             <p>@Emmy</p>
-//                         </div>
-//                     </a>`
-    
-//     return blogContainer.insertAdjacentHTML("afterbegin",single)
-    
-// })
+//getting stored comment from local storage 
+const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
+displayComments(retrivedComments);

@@ -1,60 +1,74 @@
-const articleForm = document.getElementById("article-form")
-const articleTitle=document.getElementById("article-title")
-const articleImage=document.getElementById("article-image")
-const articleDesc=document.getElementById("article-desc")
-const articleCount = document.getElementById("article-count")
+const articleForm = document.getElementById("article-form");
+const articleTitle = document.getElementById("article-title");
+const articleImage = document.getElementById("article-image");
+const articleDesc = document.getElementById("article-desc");
+const articleCount = document.getElementById("article-count");
 const articleHD = document.getElementById("article-holder");
-
+const deleteConfirmation= document.getElementById("delete");
+const cancelButton = document.getElementById("cancel");
+const confirmationButton = document.getElementById("confirm");
 
 articleForm.addEventListener("submit", (e) => {
-    // e.preventDefault();
 
-    const articleData = {title : articleTitle.value, image: articleImage.value, discription: articleDesc.value };
+
+    const articleData = { title: articleTitle.value, image: articleImage.value, discription: articleDesc.value };
+
+
+    //getting aricle sfrom local storage
+    const retrivedArr = JSON.parse(localStorage.getItem("articles")) || [];
+
+    retrivedArr.push(articleData);
+// saving aricles to locastorage
+    localStorage.setItem("articles", JSON.stringify(retrivedArr));
+
+    //clearing form
+    articleForm.reset();
 
     
-    const retrivedArr = JSON.parse(localStorage.getItem("articles")) || []
-
-    // Add the new form data to the container
-    retrivedArr.push(articleData);
-
-    // Save the updated container back to localStorage
-    localStorage.setItem("articles", JSON.stringify(retrivedArr ));
-
-    // Reset the form
-    articleForm.reset();
+    updateArticleCount();
 });
 
-const retrivedArr = JSON.parse(localStorage.getItem("articles")) || []
-articleCount.textContent = `${retrivedArr.length} articles`
+//getting articles from local storage
+const retrivedArr = JSON.parse(localStorage.getItem("articles")) || [];
+updateArticleCount();
 
+//function to update our counter
+function updateArticleCount() {
+    articleCount.textContent = `${retrivedArr.length} articles`;
+}
 
-retrivedArr.map((article,index) => {
-    const delet = document.getElementById("delete");
-    const id = `${index}-trash`
+//looping through all aricles
+retrivedArr.forEach((article, index) => {
+
+    const id = delete-`${index}`;
     const html = `<div class="article">
-                        <p>${article.title}</p>
+                        <p><strong>Title:</strong><br><br> ${article.title}</p>
+                        <p><strong>Image src:</strong><br><br> ${article.image}</p>
+                        <p><strong>Discription:</strong><br><br> ${article.discription}</p>
                         <div>
                             <button><img src="./pen-to-square-solid (1).svg"  class="action-svg" alt="img"/></button>
-                            <button><img src="./trash-solid.svg" class="action-svg" id = ${id} /></button>
-            
+                            <button><img src="./dashbord-logon/bin.png" class="action-svg" id = "${id}" /></button>
                         </div>
-                    </div>`
+                    </div>`;
+    //adding each article to article conatiner
     articleHD.insertAdjacentHTML("afterbegin", html);
-    const newTrash = document.getElementById(id);
-  
-  newTrash.addEventListener("click",(index)=>{
-      
-      // delet.style.display = "block";
-  
-  const updatedArticles = retrivedArr.filter((item,i)=>i !== index)
-      localStorage.setItem("articles", JSON.stringify(updatedArticles));
-      console.log(updatedArticles);
-  
 
+    //adding event listen to trash icon to trigger delet article
+    const deleteButton = document.getElementById(id);
 
-
-
-    
-  })
-})
-
+    deleteButton.addEventListener("click", () => {
+        
+        deleteConfirmation.style.display = "block";
+ 
+        confirmationButton.addEventListener("click", () => {
+            retrivedArr.splice(index, 1);
+            localStorage.setItem("articles", JSON.stringify(retrivedArr));
+            window.location.reload(); //reloding window object to reflect change once article is deletde
+            deleteConfirmation.style.display = "none";
+        })
+        cancelButton.addEventListener("click", () => {
+            deleteConfirmation.style.display = "none";
+        })
+       
+    });
+});

@@ -70,12 +70,22 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
     //delete modal js
+let retrivedArr = [];
    
-const retrivedArr = JSON.parse(localStorage.getItem("myArray"))
+retrivedArr = JSON.parse(localStorage.getItem("messages"))
 
     const messageCount = document.getElementById("messages-cont");
 
-    messageCount.textContent = `${retrivedArr?.length} Message(s)`;
+
+    const handleDeleteComment = (id) => {
+    if (id) {
+        retrivedArr.splice(id, 1)
+        localStorage.setItem("messages", JSON.stringify(retrivedArr))
+        window.location.reload();
+       }   
+    }
+
+    messageCount.textContent = `${retrivedArr ? retrivedArr?.length : "0"  } Message(s)`;
 
     console.log("message container length:", retrivedArr.length);
 
@@ -88,75 +98,29 @@ const retrivedArr = JSON.parse(localStorage.getItem("myArray"))
                     </div>
                 </div>`
     
-    retrivedArr.map(mess => {
+    retrivedArr.map((mess , index) => {
+         const id = delete-`${index}`;
         const html=`<div class="message">
-                    <p>${mess.email}</p>
-                    <p>${mess.message} </p>
+                    <p><strong>Email:</strong> ${mess.email}</p>
+                    <p><strong>Subject: </strong>${mess.subject} </p>
+                    <p><strong>Message:</strong>${mess.message} </p>
                     <div>
-                        <p>reply</p>
-                        <p>delete</p>
+                        <p><a href=mailto:${mess.email}>reply</a></p>
+                        <p id="delete" data-id="${index}">delete</p>
                     </div>
                 </div>`
         
-              return messageContainer.insertAdjacentHTML("afterbegin",html)
         
-    })
-    
-    // messageContainer.insertAdjacentHTML("afterbegin",html)
-    // messageContainer.insertAdjacentHTML("afterbegin",html)
+       return messageContainer.insertAdjacentHTML("afterbegin", html)
+    });
 
-
-
-    //add article to local stoarge
-
-//     articleForm.addEventListener("submit", (e) => {
-//         e.preventDefault()
-//         const newArticle = { title: articleTitle.value, description: articleDesc.value,image:articleImage.value }
-
-//         const articleConatiner = JSON.parse(localStorage.getItem("articles")) || []
-
-//         articleConatiner.push(newArticle)
-
-//         localStorage.setItem("articles", JSON.stringify(articleConatiner))
-        
-//         console.log("new article",newArticle)
-
-//     })
-
-//     const articles = JSON.parse(localStorage.getItem("articles"))
-//     articleCount.textContent = `${articles.length} articles`
-    
-
-
-
-//     // defining article container div
-// const ownContainer = document.getElementById("article-holder");
-
-//     //looping throuh all articles and create tem-late html for each articl
-// articles.forEach((article,index) => {
-//     const htmlTemplate = `<div class="article">
-//                     <p>${article.title}</p>
-//                     <div>
-//                         <button><img src="./pen-to-square-solid (1).svg" class="action-svg"/></button>
-//                         <button id="article-to-delete"><img src="./trash-solid.svg" id="trash" class="action-svg"/></button>
-//                     </div>
-//                 </div>`;
-    
-//     //inserting or appending that html templae above to article container
-//     ownContainer.insertAdjacentHTML("afterbegin", htmlTemplate);
-// });
-    
-//     //showing numver of comments to user
-//     const commentCount = document.getElementById("comment-count")
-
-//     const allComments = JSON.parse(localStorage.getItem("comments"))
-
-//     commentCount.textContent = `${allComments.length} comments`
-    
-
-//     //rendering 
-
-
+    const deleteButtons = document.querySelectorAll('#delete');
+    deleteButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        const index = event.target.getAttribute('data-id');
+        handleDeleteComment(index);
+    });     
+})
     
     
 });

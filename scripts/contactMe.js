@@ -4,7 +4,7 @@ const subject = document.getElementById("subject");
 const email = document.getElementById("email");
 
 // const myArr = [{ name: "soleil", exp: "js py" }, 34]
-// localStorage.setItem("myArray", JSON.stringify(myArr))
+// localStorage.setItem("messagesy", JSON.stringify(myArr))
 
 messgeForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -12,13 +12,13 @@ messgeForm.addEventListener("submit", (e) => {
     const formData = { email: email.value, message: message.value, subject: subject.value };
 
     // Retrieve existing data from localStorage
-    const retrivedArr = JSON.parse(localStorage.getItem("myArray")) || []
+    const retrivedArr = JSON.parse(localStorage.getItem("messages")) || []
 
     // Add the new form data to the container
     retrivedArr.push(formData);
 
     // Save the updated container back to localStorage
-    localStorage.setItem("myArray", JSON.stringify(retrivedArr ));
+    localStorage.setItem("messages", JSON.stringify(retrivedArr ));
 
     // Reset the form
     messgeForm.reset();
