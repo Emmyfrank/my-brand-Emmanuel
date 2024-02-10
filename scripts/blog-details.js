@@ -38,3 +38,14 @@ function displayComments(comments) {
 //getting stored comment from local storage 
 const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
 displayComments(retrivedComments);
+
+// counting comments
+function refreshComments(){
+    if("comments" in localStorage){
+        let allcomments = JSON.parse(localStorage['comments']);
+        document.getElementById("ncomments").innerHTML = allcomments.length;
+    }timeout
+}
+setInterval(() => {
+    refreshComments();
+}, 1000);
