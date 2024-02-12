@@ -45,6 +45,10 @@ ul a {
     color: white;
 
 }
+#btn{
+    background-color:  rgb(73, 43, 43);
+    cursor: pointer;
+}
 
 
 
@@ -475,6 +479,7 @@ padding: 5px;
 @media only screen and (max-width:690px){
     .sidebar {
         display: none;
+        position: fixed;
     }
     main {
         width: 100%;
