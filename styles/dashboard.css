@@ -182,6 +182,9 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+.article-tt {
+    text-wrap: wrap;
+}
 
 
 /* modal to delete  */
@@ -203,6 +206,11 @@ a {
 
 /* media querrie */
 
+table {
+    width: 80%;
+    margin: auto;
+}
+
 @media only screen and (max-width:790px){
     .sidebar {
         display: none;
@@ -222,6 +230,7 @@ a {
     }
     .article {
         width: 100%;
+        
     }
 
     .delete {
@@ -239,5 +248,16 @@ a {
         display: block;
     }
 }
+
+.headrs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    margin: auto;
+
+}
+
+
 
 

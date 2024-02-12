@@ -7,6 +7,7 @@ const articleHD = document.getElementById("article-holder");
 const deleteConfirmation= document.getElementById("delete");
 const cancelButton = document.getElementById("cancel");
 const confirmationButton = document.getElementById("confirm");
+const tableBody = document.getElementById("table-body")
 
 articleForm.addEventListener("submit", (e) => {
 
@@ -41,15 +42,19 @@ function updateArticleCount() {
 retrivedArr.forEach((article, index) => {
 
     const id = delete-`${index}`;
+
+    
     const html = `<div class="article">
-                        <p><strong>Title:</strong><br><br> ${article.title}</p>
-                        <p><strong>Image src:</strong><br><br> ${article.image}</p>
-                        <p><strong>Discription:</strong><br><br> ${article.discription}</p>
-                        <div>
+                        <p style="width:20%;margin-right:5px"> ${article.title}</p>
+                        <p style="width:20%;margin-right:5px"> ${article.image}</p>
+                        <p style="width:30%;margin-right:5px;flex:1"> ${article.discription}</p>
+                        <div style="width:10%" style="dislay:flex">
                             <button><img src="./pen-to-square-solid (1).svg"  class="action-svg" alt="img"/></button>
                             <button><img src="./dashbord-logon/bin.png" class="action-svg" id = "${id}" /></button>
                         </div>
                     </div>`;
+                 
+                  
     //adding each article to article conatiner
     articleHD.insertAdjacentHTML("afterbegin", html);
 
@@ -71,4 +76,4 @@ retrivedArr.forEach((article, index) => {
         })
        
     });
-});
+})

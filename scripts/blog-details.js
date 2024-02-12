@@ -28,7 +28,7 @@ function displayComments(comments) {
                         <div>
                             <div class="user">Comment.</div>
                             <div>${comment.content}</div>
-                            <div>08 Fr 2024</div>
+                            <div>Fr 2024</div>
                         </div>        
                     </div>`;
         commentsContainer.insertAdjacentHTML("afterbegin", html);
@@ -40,7 +40,7 @@ const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
 displayComments(retrivedComments);
 
 // counting comments
-function refreshComments(){
+function refreshComments(messages){
     if("comments" in localStorage){
         let allcomments = JSON.parse(localStorage['comments']);
         document.getElementById("ncomments").innerHTML = allcomments.length;
