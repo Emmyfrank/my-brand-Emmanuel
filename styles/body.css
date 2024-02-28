@@ -1,0 +1,30 @@
+
+
+.blog{
+    width: 130px;
+    /* background-color: aqua; */
+    border-radius: 5px;
+    box-shadow: -2px 2px 3px 2px rgba(0,0,0,0.3);
+}
+
+
+
+.blog img {
+    width: 100%;
+    
+}
+
+.blog-detail{
+    padding: 5px;
+}
+
+.article-title{
+    white-space: wrap;
+    margin-bottom: 10px;
+}
+
+.article-holder {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(130px,1fr));
+}

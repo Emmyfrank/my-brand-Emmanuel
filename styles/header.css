@@ -16,6 +16,13 @@ header img {
     height: 30px;
 }
 
+
+.message-conatiner {
+    background: red !important;
+    width: 100%;
+    height: 100px;
+}
+
 .hide {
     position: absolute;
     top: 10px;
@@ -27,6 +34,10 @@ header img {
     display: none;
 }
 
+.radius {
+    border-radius: 0 !important;
+}
+
 
 
 
@@ -34,6 +45,10 @@ header img {
 @media only screen and (max-width:690px){
     header {
         display: flex;
+    }
+
+    .rounded-md{
+        border-radius: 2px;
     }
 
     .sidebar {

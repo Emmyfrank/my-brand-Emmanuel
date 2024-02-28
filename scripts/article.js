@@ -9,12 +9,34 @@ const cancelButton = document.getElementById("cancel");
 const confirmationButton = document.getElementById("confirm");
 const tableBody = document.getElementById("table-body")
 
+const onFileChange=(e)=>{
+    if(e.target.files){
+
+        const nunu= new FileReader()
+
+        nunu.readAsDataURL(e.target.files[0])
+
+        nunu.onload = (e)=>{ 
+            articleImage.src = e.target.result
+        }
+
+    }
+}
+
+articleImage.addEventListener("change",onFileChange)
+
 articleForm.addEventListener("submit", (e) => {
 
+// e.preventDefault()
+    const articleData = { title: articleTitle.value, image: articleImage.src, discription: articleDesc.value };
 
-    const articleData = { title: articleTitle.value, image: articleImage.value, discription: articleDesc.value };
+    console.log(articleData)
 
 
+    if(!articleTitle.value || !articleImage.value || !articleDesc.value){
+        alert("all field are require")
+        return
+    }
     //getting aricle sfrom local storage
     const retrivedArr = JSON.parse(localStorage.getItem("articles")) || [];
 
@@ -43,6 +65,16 @@ retrivedArr.forEach((article, index) => {
 
     const id = delete-`${index}`;
 
+    const html2=`<div class="blog">
+    <img src=${article.image} alt="blog image">
+    <div class="blog-detail">
+        <div class="article-title">${article.title}</div>
+        <div class="blog-action">
+            <button id = "${id}">delete</button>
+            <button>edit</button>
+        </div>
+    </div>
+</div>`
     
     const html = `<div class="article">
                         <p style="width:20%;margin-right:5px"> ${article.title}</p>
@@ -56,7 +88,7 @@ retrivedArr.forEach((article, index) => {
                  
                   
     //adding each article to article conatiner
-    articleHD.insertAdjacentHTML("afterbegin", html);
+    articleHD.insertAdjacentHTML("afterbegin", html2);
 
     //adding event listen to trash icon to trigger delet article
     const deleteButton = document.getElementById(id);

@@ -48,7 +48,7 @@ a {
 .mainbar {
     width: 80%;
     margin-left: 20%;
-    padding: 30px 20px;
+    padding:20px;
     min-height: 100vh;
     margin-top: 70px;
 }
@@ -72,8 +72,12 @@ a {
 }
 
 .card-conatiner {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    gap: 15px;
+    margin: auto;
+    background: aqua;
+    
 }
 
 .card {
@@ -109,9 +113,9 @@ a {
     color: white;
 }
 
-.default {
+/* .default {
     margin-top: 30px;
-}
+} */
 
 .add-article-cont, .view-articles-cont {
     min-height: 100vh;
@@ -218,6 +222,8 @@ table {
         width: 200px;
         top: 70px;
         z-index: 1000;
+        overflow-x: hidden;
+        overflow: hidden;
     }
 
     .topbar {
@@ -227,6 +233,7 @@ table {
     
     .mainbar {
         margin-left: 0;
+        width: 100%;
     }
     .article {
         width: 100%;

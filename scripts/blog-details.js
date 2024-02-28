@@ -3,6 +3,8 @@ const commentForm = document.getElementById("comment-form");
 const singleComment = document.getElementById("comment");
 const commentsContainer = document.getElementById("comments");
 
+
+
 commentForm.addEventListener("submit", (e) => {
     e.preventDefault();
     
@@ -39,7 +41,7 @@ function displayComments(comments) {
 const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
 displayComments(retrivedComments);
 
-// counting comments
+// // counting comments
 function refreshComments(messages){
     if("comments" in localStorage){
         let allcomments = JSON.parse(localStorage['comments']);
@@ -49,3 +51,6 @@ function refreshComments(messages){
 setInterval(() => {
     refreshComments();
 }, 1000);
+
+
+
