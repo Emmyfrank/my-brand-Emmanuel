@@ -8,6 +8,7 @@ const deleteConfirmation= document.getElementById("delete");
 const cancelButton = document.getElementById("cancel");
 const confirmationButton = document.getElementById("confirm");
 const tableBody = document.getElementById("table-body")
+let articles = [];
 
 const onFileChange=(e)=>{
     if(e.target.files){
@@ -25,45 +26,53 @@ const onFileChange=(e)=>{
 
 articleImage.addEventListener("change",onFileChange)
 
-articleForm.addEventListener("submit", (e) => {
+articleForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+if(!articleTitle.value || !articleImage.value || !articleDesc.value){
+    alert("all field are require")
+    return
+}
+//getting aricle sfrom local storage
+// articles = JSON.parse(localStorage.getItem("articles")) || [];
 
-// e.preventDefault()
-    const articleData = { title: articleTitle.value, image: articleImage.src, discription: articleDesc.value };
-
-    console.log(articleData)
-
-
-    if(!articleTitle.value || !articleImage.value || !articleDesc.value){
-        alert("all field are require")
-        return
+const articleData = { title: articleTitle.value, image: articleImage.src, description: articleDesc.value };
+const response = await fetch('https://backend-ctov.onrender.com/api/v1/articles',{
+    method: "POST",
+    body:JSON.stringify(articleData),
+    headers:{
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`
     }
-    //getting aricle sfrom local storage
-    const retrivedArr = JSON.parse(localStorage.getItem("articles")) || [];
-
-    retrivedArr.push(articleData);
-// saving aricles to locastorage
-    localStorage.setItem("articles", JSON.stringify(retrivedArr));
-
+  });
+  const data = await response.json();
+  if(response.status === 201) {
+    articles.push(data.article);
     //clearing form
     articleForm.reset();
+    location.reload();
+  }
+// saving aricles to locastorage
+// localStorage.setItem("articles", JSON.stringify(articles));
 
-    
-    updateArticleCount();
+
+updateArticleCount();
 });
 
-//getting articles from local storage
-const retrivedArr = JSON.parse(localStorage.getItem("articles")) || [];
+//getting articles from local from api
+document.addEventListener("DOMContentLoaded", async function() {
+    await fetch('https://backend-ctov.onrender.com/api/v1/articles',{
+})
+.then(async(response)=>{
+    const responseData = await response.json();
+  if(response.status === 200){
+    articles = responseData.articles;
+    console.log(articles);
+  }
+})
 updateArticleCount();
+articles.forEach((article, index) => {
 
-//function to update our counter
-function updateArticleCount() {
-    articleCount.textContent = `${retrivedArr.length} articles`;
-}
-
-//looping through all aricles
-retrivedArr.forEach((article, index) => {
-
-    const id = delete-`${index}`;
+    const id = article._id;
 
     const html2=`<div class="blog">
     <img src=${article.image} alt="blog image">
@@ -76,15 +85,15 @@ retrivedArr.forEach((article, index) => {
     </div>
 </div>`
     
-    const html = `<div class="article">
-                        <p style="width:20%;margin-right:5px"> ${article.title}</p>
-                        <p style="width:20%;margin-right:5px"> ${article.image}</p>
-                        <p style="width:30%;margin-right:5px;flex:1"> ${article.discription}</p>
-                        <div style="width:10%" style="dislay:flex">
-                            <button><img src="./pen-to-square-solid (1).svg"  class="action-svg" alt="img"/></button>
-                            <button><img src="./dashbord-logon/bin.png" class="action-svg" id = "${id}" /></button>
-                        </div>
-                    </div>`;
+    // const html = `<div class="article">
+    //                     <p style="width:20%;margin-right:5px"> ${article.title}</p>
+    //                     <p style="width:20%;margin-right:5px"> ${article.image}</p>
+    //                     <p style="width:30%;margin-right:5px;flex:1"> ${article.discription}</p>
+    //                     <div style="width:10%" style="dislay:flex">
+    //                         <button><img src="./pen-to-square-solid (1).svg"  class="action-svg" alt="img"/></button>
+    //                         <button><img src="./dashbord-logon/bin.png" class="action-svg" id = "${id}" /></button>
+    //                     </div>
+    //                 </div>`;
                  
                   
     //adding each article to article conatiner
@@ -97,9 +106,16 @@ retrivedArr.forEach((article, index) => {
         
         deleteConfirmation.style.display = "block";
  
-        confirmationButton.addEventListener("click", () => {
-            retrivedArr.splice(index, 1);
-            localStorage.setItem("articles", JSON.stringify(retrivedArr));
+        confirmationButton.addEventListener("click", async () => {
+    
+            deleteButton.textContent = "Deleting...";
+            deleteButton.attributes.disabled = true;
+       await fetch(`https://backend-ctov.onrender.com/api/v1/articles/${id}`,{
+            method: "DELETE",
+            headers: {Authorization: `Bearer ${localStorage.getItem("token")}`},
+            })
+            deleteButton.textContent = "Delete";
+            deleteButton.attributes.disabled = false;
             window.location.reload(); //reloding window object to reflect change once article is deletde
             deleteConfirmation.style.display = "none";
         })
@@ -109,3 +125,9 @@ retrivedArr.forEach((article, index) => {
        
     });
 })
+});
+
+//function to update our counter
+function updateArticleCount() {
+    articleCount.textContent = `${articles.length} articles`;
+}

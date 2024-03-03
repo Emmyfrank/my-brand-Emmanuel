@@ -1,10 +1,12 @@
-function handleLogin() {
+async function handleLogin() {
     const errorMessage = document.getElementById('error-message');
-    const username = document.getElementById('username').value;
+    const email = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    const buttonToloady = document.getElementById("btn");
+    let loading = false;
 
     // Check if username and password are filled
-    if (!username || !password) {
+    if (!email || !password) {
         errorMessage.textContent = 'Fill UserName and Passwoed';
         return;
   }
@@ -12,27 +14,32 @@ function handleLogin() {
   if (password.length < 4) {
     return errorMessage.textContent = "Weak Password";
   }
+  buttonToloady.textContent = "Loading...";
+  buttonToloady.attributes.disabled = true;
 
 
-    // Check if the entered credentials are valid )
-    if (validateCredentials(username, password)) {
-        // link to admin dashboard if credintial are valid
-        window.location.href = './dashboard.html';
-    } else {
-        // error message
-        errorMessage.textContent = 'Invalid username or password.';
+
+  const response = await fetch('https://backend-ctov.onrender.com/api/v1/users/login',{
+    method: "POST",
+    body:JSON.stringify({email, password}),
+    headers:{
+      "Content-Type": "application/json"
     }
-}
+  });
+  
+  buttonToloady.textContent = "Login";
+  buttonToloady.attributes.disabled = false;
 
-function validateCredentials(username, password) {
+  const data = await response.json();
+  if(response.status === 200){
+    localStorage.setItem("token",data.token);
+    window.location.href = './dashboard.html';
+  }
+  else{
+    return errorMessage.textContent = data.message;
+  }
+
     
-    // this isstatic admin username and password
-    const validUsername = 'Emmy';
-  const validPassword = '     ';
-  
-  
-  return username === validUsername && password === validPassword;
-
 }
 
 

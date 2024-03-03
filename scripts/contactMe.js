@@ -1,39 +1,81 @@
 const messgeForm = document.getElementById("message-form");
 const message = document.getElementById("msg");
-const subject = document.getElementById("subject");
+const Name = document.getElementById("subject");
 const email = document.getElementById("email");
+const errorMessage = document.getElementById("error-message");
+const successMessage = document.getElementById("success-message");
+const contactButton = document.querySelector(".contactBtnn");
 
-// const myArr = [{ name: "soleil", exp: "js py" }, 34]
-// localStorage.setItem("messagesy", JSON.stringify(myArr))
 
-messgeForm.addEventListener("submit", (e) => {
+
+messgeForm.addEventListener("submit",async (e) => {
     e.preventDefault();
+    if(message.value.length === 0){
+        errorMessage.textContent = "Message required";
+        setTimeout(() => {
+            errorMessage.textContent = "";
+            
+        }, 5000);
+        return false;
 
-    const formData = { email: email.value, message: message.value, subject: subject.value };
+    }
 
-    // Retrieve existing data from localStorage
-    const retrivedArr = JSON.parse(localStorage.getItem("messages")) || []
+    if(Name.value.length === 0){
+        errorMessage.textContent = "name required";
+        setTimeout(() => {
+            errorMessage.textContent = "";
+            
+        }, 5000);
+        return false;
 
-    // Add the new form data to the container
-    retrivedArr.push(formData);
+    }
 
-    // Save the updated container back to localStorage
-    localStorage.setItem("messages", JSON.stringify(retrivedArr ));
+    if(email.value.length === 0){
+        errorMessage.textContent = "Email required";
+        setTimeout(() => {
+            errorMessage.textContent = "";
+            
+        }, 5000);
+        return false;
 
-    // Reset the form
+    }
+
+
+
+
+    const formData = { email: email.value, message: message.value, name: Name.value };
+    
+    contactButton.textContent = "Loading...";
+    contactButton.attributes.disabled = true;
+     const response = await fetch('https://backend-ctov.onrender.com/api/v1/messages',{
+    method: "POST",
+    body:JSON.stringify(formData),
+    headers:{
+      "Content-Type": "application/json"
+    }
+  });
+  contactButton.textContent = "submit";
+  contactButton.attributes.disabled = false;
+
+  const data = await response.json();
+  if(response.status === 201){
     messgeForm.reset();
+    successMessage.textContent = "Message sent";
+    setTimeout(() => {
+        errorMessage.textContent = "";
+        
+    }, 5000);
+    return false;
 
-    // Log the form values
-    console.log(formData.email);
-    console.log(formData.subject);
-    console.log(formData.message.trim());
+
+  }
+  else{
+    errorMessage.textContent = data.message;
+    setTimeout(() => {
+        errorMessage.textContent = "";
+        
+    }, 5000);
+    return false;
+    
+  }
 });
-
-
-
-
-
-
-
-
-console.log("retrived ddtaa : ",retrivedArr)

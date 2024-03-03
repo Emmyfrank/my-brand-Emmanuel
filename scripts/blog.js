@@ -1,12 +1,18 @@
 const blogContainer = document.getElementById("blogs-container")
 
-const blogs = JSON.parse(localStorage.getItem("articles")) || [];
+let blogs = [];
 
+//getting articles from local from api
+document.addEventListener("DOMContentLoaded", async function() {
+    await fetch('https://backend-ctov.onrender.com/api/v1/articles',{
+})
+.then(async(response)=>{
+    const responseData = await response.json();
+  if(response.status === 200){
+    blogs = responseData.articles;
 
-
-
-
-
+  }
+})
 
 const loadBlog=()=>{
     blogs.map(blog=>{
@@ -25,3 +31,5 @@ blogContainer.insertAdjacentHTML("afterbegin",html)
 }
 
 loadBlog()
+
+});
