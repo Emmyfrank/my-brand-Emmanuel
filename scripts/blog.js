@@ -2,7 +2,7 @@ const blogContainer = document.getElementById("blogs-container")
 
 let blogs = [];
 
-//getting articles from local from api
+//getting articles  from api 
 document.addEventListener("DOMContentLoaded", async function() {
     await fetch('https://backend-ctov.onrender.com/api/v1/articles',{
 })
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 const loadBlog=()=>{
     blogs.map(blog=>{
-        const html=`<a href="#" class="blog">
+        const html=`<a href="./blog-details.html?${blog._id}" class="blog">
 <img src=${blog.image} alt="blog image"/>
 <h4>${blog.title}</h4>
 <div class="blog-des">

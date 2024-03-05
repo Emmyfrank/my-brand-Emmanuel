@@ -33,6 +33,9 @@ async function handleLogin() {
   const data = await response.json();
   if(response.status === 200){
     localStorage.setItem("token",data.token);
+    if(data.user.role!== "admin"){
+      return window.location.href="./index.html"
+    }
     window.location.href = './dashboard.html';
   }
   else{

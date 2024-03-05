@@ -124,12 +124,12 @@ await fetch('https://backend-ctov.onrender.com/api/v1/messages',{
     
     retrivedArr.map((mess) => {
         const html=`<div class="message">
-                    <p><strong>Name: </strong>${mess.name} </p>
+                    <p><strong>Name: </strong>${mess?.name} </p>
                     <p><strong>Email:</strong> ${mess.email}</p>
                     <p><strong>Message:</strong>${mess.message} </p>
                     <div>
                         <p><a href=mailto:${mess.email}>reply</a></p>
-                        <p class='.delete-messn' data-id=${mess._id}>delete</p>
+                        <p class='delete-messn' data-id=${mess._id} id="${mess._id}">delete</p>
                     </div>
                 </div>`
         
@@ -142,6 +142,7 @@ await fetch('https://backend-ctov.onrender.com/api/v1/messages',{
     button.addEventListener("click", async(event) => {
         const index = event.target.getAttribute('data-id');
         await deleteMessage(index);
+        // alert(index)
     });     
 })
     

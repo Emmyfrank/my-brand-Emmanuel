@@ -10,8 +10,11 @@ const confirmationButton = document.getElementById("confirm");
 const tableBody = document.getElementById("table-body")
 let articles = [];
 
+let image;
+
 const onFileChange=(e)=>{
     if(e.target.files){
+        image = e.target.files[0];
 
         const nunu= new FileReader()
 
@@ -35,12 +38,17 @@ if(!articleTitle.value || !articleImage.value || !articleDesc.value){
 //getting aricle sfrom local storage
 // articles = JSON.parse(localStorage.getItem("articles")) || [];
 
-const articleData = { title: articleTitle.value, image: articleImage.src, description: articleDesc.value };
+// const articleData = { title: articleTitle.value, image: articleImage.value, description: articleDesc.value };
+
+const formData = new FormData();
+formData.append('title', articleTitle.value);
+formData.append('image', image);
+formData.append('description', articleDesc.value);
+
 const response = await fetch('https://backend-ctov.onrender.com/api/v1/articles',{
     method: "POST",
-    body:JSON.stringify(articleData),
+    body: formData,
     headers:{
-      "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`
     }
   });
@@ -60,13 +68,11 @@ updateArticleCount();
 
 //getting articles from local from api
 document.addEventListener("DOMContentLoaded", async function() {
-    await fetch('https://backend-ctov.onrender.com/api/v1/articles',{
-})
+    await fetch('https://backend-ctov.onrender.com/api/v1/articles')
 .then(async(response)=>{
     const responseData = await response.json();
   if(response.status === 200){
     articles = responseData.articles;
-    console.log(articles);
   }
 })
 updateArticleCount();
@@ -80,7 +86,7 @@ articles.forEach((article, index) => {
         <div class="article-title">${article.title}</div>
         <div class="blog-action">
             <button id = "${id}">delete</button>
-            <button>edit</button>
+            <button id="${id+index}">edit</button>
         </div>
     </div>
 </div>`
@@ -124,6 +130,30 @@ articles.forEach((article, index) => {
         })
        
     });
+
+    // const editButton = document.getElementById(id+index);
+    // editButton.addEventListener("click", () => {
+        
+    //     deleteConfirmation.style.display = "block";
+ 
+    //     confirmationButton.addEventListener("click", async () => {
+    
+    //         deleteButton.textContent = "Deleting...";
+    //         deleteButton.attributes.disabled = true;
+    //    await fetch(`https://backend-ctov.onrender.com/api/v1/articles/${id}`,{
+    //         method: "DELETE",
+    //         headers: {Authorization: `Bearer ${localStorage.getItem("token")}`},
+    //         })
+    //         deleteButton.textContent = "Delete";
+    //         deleteButton.attributes.disabled = false;
+    //         window.location.reload(); //reloding window object to reflect change once article is deletde
+    //         deleteConfirmation.style.display = "none";
+    //     })
+    //     cancelButton.addEventListener("click", () => {
+    //         deleteConfirmation.style.display = "none";
+    //     })
+       
+    // });
 })
 });
 
