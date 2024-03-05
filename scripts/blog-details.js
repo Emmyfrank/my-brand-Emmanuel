@@ -1,4 +1,5 @@
 
+
 let article;
 document.addEventListener("DOMContentLoaded", async function() {
     const articleId = (window.location.href.split('?'))[1];
@@ -119,6 +120,7 @@ function refreshComments(messages){
 setInterval(() => {
     refreshComments();
 }, 1000);
+
 
 
 
