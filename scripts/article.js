@@ -86,7 +86,7 @@ articles.forEach((article, index) => {
         <div class="article-title">${article.title}</div>
         <div class="blog-action">
             <button id = "${id}">delete</button>
-            <button id="${id+index}">edit</button>
+            <button id="edit-${id}" data-id="${id}">edit</button>
         </div>
     </div>
 </div>`
@@ -130,8 +130,58 @@ articles.forEach((article, index) => {
         })
        
     });
+  
+    
+    const editBlogContainer = document.getElementById("edit-blog-cont-edit")
+    const editBlogForm = document.getElementById("edit-blog-form")
+    const editBlogDescription = document.getElementById("article-desc-edit")
+    const editBlogImage = document.getElementById("article-image-edit")
+    const editBlogTitle = document.getElementById("article-title-edit")
+    const editBlogBtn = document.getElementById("sub")
 
-    // const editButton = document.getElementById(id+index);
+    const editButtons = document.getElementById(`edit-${id}`)
+    editButtons.addEventListener("click", () => {
+        editBlogContainer.classList.toggle("bhidden")
+        editBlogTitle.value = article.title
+        editBlogDescription.value = article.description
+
+
+
+        editBlogForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            let image=''
+
+            editBlogImage.addEventListener("change", e => {
+                if (e.target.files) {
+                    image = e.target.files[0];
+                }
+            })
+
+            const formData = new FormData();
+
+            formData.append('title', editBlogTitle.value);
+            formData.append('description', editBlogDescription.value);
+            // formData.append('image', article.image);
+
+            const res = await fetch(`https://backend-ctov.onrender.com/api/v1/articles/${id}`,{
+                method: "PATCH",
+                body:formData,
+            headers: {Authorization: `Bearer ${localStorage.getItem("token")}`},
+            })
+
+            editBlogForm.style.display="none"
+            
+            editBlogBtn.textContent = "editing..."
+            editBlogBtn.disabled = true
+
+            window.location.reload();
+            
+          
+        })
+    })
+
+
     // editButton.addEventListener("click", () => {
         
     //     deleteConfirmation.style.display = "block";
