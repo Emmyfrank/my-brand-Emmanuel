@@ -1,14 +1,14 @@
 
 let article;
-document.addEventListener("DOMContentLoaded", async function() {
-    const articleId = (window.location.href.split('?'))[1];
+const articleId = (window.location.href.split('?'))[1];
+document.addEventListener("DOMContentLoaded", async function () {
     await fetch(`https://backend-ctov.onrender.com/api/v1/articles/${articleId}`)
-    .then(async(response)=>{
-        const responseData = await response.json();
-        if(response.status === 200){
-        article = responseData.deta;
-        const container = document.getElementById("blog-details");
-        container.innerHTML = `<div class="blog-header">
+        .then(async (response) => {
+            const responseData = await response.json();
+            if (response.status === 200) {
+                article = responseData.deta;
+                const container = document.getElementById("blog-details");
+                container.innerHTML = `<div class="blog-header">
         <img src=${article.image} alt="blog image" />
         <div>
             <h2>${article.title}</h2>
@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     <div class="interactions">
      <!-- thise are likes and their counter -->
         <div class="int">
-            <img src="./images/svg/social/heart-solid.svg" alt="comments"/>
-            <p>${article.likes.length}</p>
+            <img id="likeButton" src="./images/svg/social/heart-solid.svg" alt="comments"/>
+            <p id="numLikes">${article.likes.length}</p>
         </div>
        <!-- thise are coments and their counter -->
         <div class="int">
@@ -29,24 +29,14 @@ document.addEventListener("DOMContentLoaded", async function() {
         </div>
 
     </div>
-<div class="comments" id="comments"></div>
-    <form id="comment-form">
-    <input class="hidden" id="id-input" value=${article._id}/>
-        <textarea id="comment" >
+    `
 
-        </textarea>
-        <div class="subcontainer">
-        <button type="submit"id="comment-btn">Comment</button>
-        <p id="errorerror"></p>
-        </div>
-    </form>`
-
-    const commentsContain = document.getElementById("comments");
-article.comments.forEach((comment)=>{
-    const commentDiv = document.createElement("div");
-    commentDiv.className = "single-comment";
-    commentDiv.id = "comm";
-    commentDiv.innerHTML = `
+                const commentsContain = document.getElementById("comments");
+                article.comments.forEach((comment) => {
+                    const commentDiv = document.createElement("div");
+                    commentDiv.className = "single-comment";
+                    commentDiv.id = "comm";
+                    commentDiv.innerHTML = `
     <img src="./images/nono2.jpg" alt="comment"/>
     <div>
         <div class="user">${comment.user.username}</div>
@@ -54,71 +44,71 @@ article.comments.forEach((comment)=>{
         <div>${comment.comment}</div>
     </div> 
     `
-    commentsContain.appendChild(commentDiv);
-})
-      }
-    })
-})
+                    commentsContain.appendChild(commentDiv);
+                })
+            }
+        })
 
+const likeButton = document.getElementById("likeButton");
+likeButton.addEventListener("click", async()=>{
+    const response = await fetch(`https://backend-ctov.onrender.com/api/v1/articles/${articleId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    });
+    const data = await response.json();
+    if(response.status === 200){
+        const likeDiv = document.getElementById("numLikes");
+        likeDiv.textContent = data.likes.length;
+    }
+
+})
+})
 
 const commentForm = document.getElementById("comment-form");
-const singleComment = document.getElementById("comment");
 const commentsContainer = document.getElementById("comments");
-const id = document.getElementById("id-input").value;
 commentForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
-    const commentData = { content: singleComment.value };
-    const response = await fetch('https://backend-ctov.onrender.com/api/v1/comments',{
+    const singleComment = document.getElementById("comment").value;
+    const commentBtn = document.getElementById("comment-btn");
+    commentBtn.textContent = "Processing...";
+    commentBtn.attributes.disabled = true;
+
+    const response = await fetch('https://backend-ctov.onrender.com/api/v1/comments', {
         method: "POST",
-        body:JSON.stringify({articleId: id, comment: singleComment.value}),
-        headers:{
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
+        body: JSON.stringify({ articleId: articleId, comment: singleComment }),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         }
-      });
-    // const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
-    
-    // retrivedComments.push(commentData);
-    // localStorage.setItem("comments", JSON.stringify(retrivedComments));
-
-    location.reload();
-
-    //calling function to display comment as i submit form 
-    displayComments(retrivedComments);
+    });
+    const data = await response.json();
+    if (response.status === 201) {
+        comment = data.comment;
+        const comCount = document.getElementById("ncomments");
+        comCount.textContent = data.commentCounter;
+        displayComments([comment]);
+        commentForm.reset();
+        commentBtn.textContent = "Comment";
+        commentBtn.attributes.disabled = false;
+    }
 });
 
 function displayComments(comments) {
-    // Clear previous comments to prevent from looping over and over each comment
-    commentsContainer.innerHTML = "";
-
-    comments.forEach((comment, index) => {
+    comments.forEach((comment) => {
         const html = `<div class="single-comment">
-                        <img src="./images/nono2.jpg\" alt="comment"/>
+                        <img src="./images/nono2.jpg" alt="comment"/>
                         <div>
-                            <div class="user">Comment.</div>
-                            <div>${comment.content}</div>
-                            <div>Fr 2024</div>
-                        </div>        
+                        <div class="user">${comment.user.username}</div>
+                        <div>${new Date(comment.createdAt).toDateString()}</div>
+                        <div>${comment.comment}</div>
+                        </div>         
                     </div>`;
         commentsContainer.insertAdjacentHTML("afterbegin", html);
     });
-}
-
-//getting stored comment from local storage 
-const retrivedComments = JSON.parse(localStorage.getItem("comments")) || [];
-displayComments(retrivedComments);
-
-// // counting comments
-function refreshComments(messages){
-    if("comments" in localStorage){
-        let allcomments = JSON.parse(localStorage['comments']);
-        document.getElementById("ncomments").innerHTML = allcomments.length;
-    }timeout
-}
-setInterval(() => {
-    refreshComments();
-}, 1000);
+};
 
 
 
