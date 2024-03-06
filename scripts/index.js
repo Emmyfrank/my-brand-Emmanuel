@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else sidebar.style.display="flex"
 
                     const targetId = this.getAttribute('href').substring(1);
+                  
+
+                    if (targetId === '/login.html') {
+                        window.location.href='/login.html'
+                    }
+                    if (targetId === '/signup.html') {
+                        window.location.href='/signup.html'
+                    }
 
                     document.getElementById(targetId).scrollIntoView({
                         behavior: 'smooth'

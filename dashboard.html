@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./styles/dashboard.css" rel="stylesheet">
     <link href="./styles/body.css" rel="stylesheet">
-
+<link href="./edit-blog.css" rel="stylesheet">
     <title>Admin Dashboard</title>
 </head>
 <body>
@@ -75,6 +75,23 @@
                         <textarea placeholder="Enter article description" id="article-desc"></textarea>
                     </label>
                     <button type="submit" id="submitBtn">Add Article</button>
+                </form>
+            </div>
+            <div class="edit-blog-cont" id="edit-blog-cont-edit">
+                <form id="edit-blog-form" class="edit-blog-form">
+                    <label>
+                        <h4>Title</h4>
+                        <input type="text" placeholder="Enter article title" id="article-title-edit"/>
+                    </label>
+                    <label>
+                        <h4>Image</h4>
+                        <input type="file" placeholder="Enter article title" id="article-image-edit"/>
+                    </label>
+                    <label>
+                        <h4>Description</h4>
+                        <textarea placeholder="Enter article description" id="article-desc-edit"></textarea>
+                    </label>
+                    <input type="submit" id="sub" value="Update Article"/>
                 </form>
             </div>
             <!-- poping to delete -->
