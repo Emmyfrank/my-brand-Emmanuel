@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     const targetId = this.getAttribute('href').substring(1);
                   
 
-                    if (targetId === '/login.html') {
+                    if (targetId === './login.html') {
                         window.location.href='/login.html'
                     }
-                    if (targetId === '/signup.html') {
-                        window.location.href='/signup.html'
+                    if (targetId === './signup.html') {
+                        window.location.href='./signup.html'
                     }
 
                     document.getElementById(targetId).scrollIntoView({
