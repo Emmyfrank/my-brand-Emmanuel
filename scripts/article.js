@@ -35,10 +35,6 @@ if(!articleTitle.value || !articleImage.value || !articleDesc.value){
     alert("all field are require")
     return
 }
-//getting aricle sfrom local storage
-// articles = JSON.parse(localStorage.getItem("articles")) || [];
-
-// const articleData = { title: articleTitle.value, image: articleImage.value, description: articleDesc.value };
 
 const formData = new FormData();
 formData.append('title', articleTitle.value);
@@ -59,9 +55,6 @@ const response = await fetch('https://backend-ctov.onrender.com/api/v1/articles'
     articleForm.reset();
     location.reload();
   }
-// saving aricles to locastorage
-// localStorage.setItem("articles", JSON.stringify(articles));
-
 
 updateArticleCount();
 });

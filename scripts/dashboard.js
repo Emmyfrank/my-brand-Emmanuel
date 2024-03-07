@@ -82,30 +82,13 @@ await fetch('https://backend-ctov.onrender.com/api/v1/messages',{
   }
 })
 
+const messageCount = document.getElementById("messages-cont");
 
-    const messageCount = document.getElementById("messages-cont");
-
-
-    // const handleDeleteComment = (id) => {
-    // if (id) {
-    //     retrivedArr.splice(id, 1)
-    //     localStorage.setItem("messages", JSON.stringify(retrivedArr))
-    //     window.location.reload();
-    //    }   
-    // }
 
     messageCount.textContent = `${retrivedArr ? retrivedArr?.length : "0"  } Message(s)`;
 
     console.log("message container length:", retrivedArr.length);
 
-    // const html=`<div class="message">
-    //                 <p>Emmanuel</p>
-    //                 <p>i like your design </p>
-    //                 <div>
-    //                     <p>reply</p>
-    //                     <p>delete</p>
-    //                 </div>
-    //             </div>`
 
     const deleteMessage = async (id)=>{
         console.log('delete block');
