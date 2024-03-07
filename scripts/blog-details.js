@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     commentDiv.className = "single-comment";
                     commentDiv.id = "comm";
                     commentDiv.innerHTML = `
-    <img src="./images/nono2.jpg" alt="comment"/>
+    <img src="./images/comment icon.jpg" alt="comment"/>
     <div>
         <div class="user">${comment.user.username}</div>
         <div>${new Date(comment.createdAt).toDateString()}</div>

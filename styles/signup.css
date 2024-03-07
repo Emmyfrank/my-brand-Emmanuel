@@ -64,7 +64,7 @@ form input::placeholder {
     text-align: center;
 }
 #btn:hover{
-    background-color: yellow;
+    background-color: burlywood;
 }
 
 form a {
@@ -76,6 +76,11 @@ form a {
     color: red;
     margin-top: 5px;
     /* display: none; */
+}
+#errooo{
+    color: red;
+    display: flex;
+    justify-content: center;
 }
 
 
