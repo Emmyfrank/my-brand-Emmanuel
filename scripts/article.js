@@ -91,15 +91,6 @@ articles.forEach((article, index) => {
     </div>
 </div>`
     
-    // const html = `<div class="article">
-    //                     <p style="width:20%;margin-right:5px"> ${article.title}</p>
-    //                     <p style="width:20%;margin-right:5px"> ${article.image}</p>
-    //                     <p style="width:30%;margin-right:5px;flex:1"> ${article.discription}</p>
-    //                     <div style="width:10%" style="dislay:flex">
-    //                         <button><img src="./pen-to-square-solid (1).svg"  class="action-svg" alt="img"/></button>
-    //                         <button><img src="./dashbord-logon/bin.png" class="action-svg" id = "${id}" /></button>
-    //                     </div>
-    //                 </div>`;
                  
                   
     //adding each article to article conatiner
@@ -182,28 +173,6 @@ articles.forEach((article, index) => {
     })
 
 
-    // editButton.addEventListener("click", () => {
-        
-    //     deleteConfirmation.style.display = "block";
- 
-    //     confirmationButton.addEventListener("click", async () => {
-    
-    //         deleteButton.textContent = "Deleting...";
-    //         deleteButton.attributes.disabled = true;
-    //    await fetch(`https://backend-ctov.onrender.com/api/v1/articles/${id}`,{
-    //         method: "DELETE",
-    //         headers: {Authorization: `Bearer ${localStorage.getItem("token")}`},
-    //         })
-    //         deleteButton.textContent = "Delete";
-    //         deleteButton.attributes.disabled = false;
-    //         window.location.reload(); //reloding window object to reflect change once article is deletde
-    //         deleteConfirmation.style.display = "none";
-    //     })
-    //     cancelButton.addEventListener("click", () => {
-    //         deleteConfirmation.style.display = "none";
-    //     })
-       
-    // });
 })
 });
 

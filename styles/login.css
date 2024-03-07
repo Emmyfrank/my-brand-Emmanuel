@@ -3,6 +3,10 @@ body {
     margin: 0;
     width: 100%;
 }
+
+#signUpMessage{
+    color: blue;
+}
 nav {
     display: flex;
     justify-content: space-between;
