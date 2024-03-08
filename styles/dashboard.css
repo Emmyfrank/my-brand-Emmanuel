@@ -3,6 +3,12 @@ body {
     margin: 0;
     box-sizing: border-box;
 }
+.dashboard p{
+cursor: pointer;
+}
+.delete-messn{
+    cursor: pointer;  
+}
 
 main {
     position: relative;

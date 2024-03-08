@@ -110,7 +110,7 @@ const messageCount = document.getElementById("messages-cont");
                     <p><strong>Name: </strong>${mess?.name} </p>
                     <p><strong>Email:</strong> ${mess.email}</p>
                     <p><strong>Message:</strong>${mess.message} </p>
-                    <div>
+                    <div class='poping'>
                         <p><a href=mailto:${mess.email}>reply</a></p>
                         <p class='delete-messn' data-id=${mess._id} id="${mess._id}">delete</p>
                     </div>
