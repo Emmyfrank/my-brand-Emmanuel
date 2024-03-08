@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   
 
                     if (targetId === '/login.html') {
-                        window.location.href='/login.html'
+                        window.location.href='./login.html'
                     }
                     if (targetId === '/signup.html') {
                         window.location.href='./signup.html'
