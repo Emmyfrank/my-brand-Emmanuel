@@ -99,7 +99,7 @@ commentForm.addEventListener("submit", async (e) => {
 function displayComments(comments) {
     comments.forEach((comment) => {
         const html = `<div class="single-comment">
-                        <img src="./images/nono2.jpg" alt="comment"/>
+                        <img src="./images/comment icon.jpg" alt="comment"/>
                         <div>
                         <div class="user">${comment.user.username}</div>
                         <div>${new Date(comment.createdAt).toDateString()}</div>

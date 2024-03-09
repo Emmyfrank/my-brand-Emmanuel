@@ -50,6 +50,7 @@ const response = await fetch('https://backend-ctov.onrender.com/api/v1/articles'
   });
   const data = await response.json();
   if(response.status === 201) {
+    window.alert("Artical has been created");
     articles.push(data.article);
     //clearing form
     articleForm.reset();

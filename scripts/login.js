@@ -25,18 +25,26 @@ async function handleLogin() {
     headers:{
       "Content-Type": "application/json"
     }
+
+    
   });
-  
   buttonToloady.textContent = "Login";
   buttonToloady.attributes.disabled = false;
+
+  
+
+  
 
   const data = await response.json();
   if(response.status === 200){
     localStorage.setItem("token",data.token);
+    window.alert("You have successfully logeged in, you can comment, like and leave message");
     if(data.user.role!== "admin"){
       return window.location.href="./index.html"
     }
     window.location.href = './dashboard.html';
+    
+
   }
   else{
     return errorMessage.textContent = data.message;
